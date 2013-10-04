@@ -174,9 +174,37 @@ js.runScript( "'Hello ' + Math.floor((Math.random()*200)+1) + ' World, from Lua!
 JavaScript out: Hello 51 World, from Lua!, length: 25
 ```
 
-## Build V8 on Windows 32 and 64 bit
+## Build V8 on Windows 32 bit
 
-If somebody has done this, please send instructions and binaries.
+* install python and git bash
+* create folders c:/cpp/js (or what you like)
+* open mingw bash shell
+* cd c:/cpp/js
+* git clone https://github.com/v8/v8.git
+* cd v8
+
+Use TortoiseSVN:
+
+* _url:_ http://gyp.googlecode.com/svn/trunk
+* _checkout directory:_ C:\cpp\js\v8\build\gyp
+* http://src.chromium.org/svn/trunk/deps/third_party/cygwin
+* C:\cpp\js\v8\third_party\cygwin
+* https://src.chromium.org/chrome/trunk/deps/third_party/icu46
+* C:\cpp\js\v8\third_party\icu
+
+Back to bash command line:
+
+* python build/gyp_v8
+* goto build -folder and open lss.sln with VisualStudio 10
+* select release and build
+* wait for a _long_ time, maybe 20-30 minutes in VirtualBox Win7.
+* extract VisualStudio 10 project to build dll: libV8_win_VS10.7z
+* copy v8\build\Release\lib folder to libV8_vs10\lib
+  * v8_nosnapshot.ia32.lib is not needed
+* copy v8\include to libV8_vs10\include
+* open libV8_vs10\libV8.sln and build release
+* copy libV8.dll from libV8_vs10\release
+
 
 ## Future development
 
