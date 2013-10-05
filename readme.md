@@ -29,7 +29,7 @@ Make dependencies takes maybe 5 minutes and build takes about 10 minutes. Now yo
   * works if you have TextWrangelr and command line tools installed
 * paste this code and save file
 
-```
+```C
 #include <v8.h>
 using namespace v8;
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 
 * Create libV8.cpp:
 
-```
+```C
 // libV8.cpp
 #include <stdlib.h>
 #include <string.h>
@@ -135,7 +135,7 @@ DLL int32_t runScript( uint8_t *inTxt, uint32_t inTxtSize, uint8_t *outTxt, uint
 
 * Create v8test.lua:
   
-```
+```Lua
 -- v8test.lua
 print()
 print("v8test.lua")
