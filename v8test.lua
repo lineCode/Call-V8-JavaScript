@@ -1,13 +1,19 @@
 -- v8test.lua
-print()
-print("v8test.lua")
 
 local ffi = require("ffi")
+print()
+print("v8test.lua: "..ffi.os.." "..ffi.arch)
+print()
+
 local js
-if ffi.os == "Windows" then
-  js = ffi.load("libV8") -- local js = require "v8"
+if ffi.os == "OSX" then
+  js = ffi.load("libV8.dylib")
 else
-  js = ffi.load("V8") -- local js = require "v8"
+  if jit.arch == "x64" then
+    js = ffi.load("x64/libV8") -- libV8.dll in windows
+  else
+    js = ffi.load("libV8") -- libV8.dll in windows
+  end
 end
 
 ffi.cdef([[

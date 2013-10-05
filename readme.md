@@ -174,7 +174,7 @@ js.runScript( "'Hello ' + Math.floor((Math.random()*200)+1) + ' World, from Lua!
 JavaScript out: Hello 51 World, from Lua!, length: 25
 ```
 
-## Build V8 on Windows 32 bit
+## Build V8 on Windows 32 and 64 bit
 
 * install python and git bash
 * create folders c:/cpp/js (or what you like)
@@ -194,17 +194,21 @@ Use TortoiseSVN:
 
 Back to bash command line:
 
-* python build/gyp_v8
+* python build/gyp_v8 
+  * x64: build/gyp_v8 -Dtarget_arch=x64
 * goto build -folder and open lss.sln with VisualStudio 10
+  * x64: go to Project Properties->General and set Platform Toolset to Windows7.1SDK
+  * select all projects -> right mouse -> Properties -> General -> set Platform Toolset to Windows7.1SDK
 * select release and build
 * wait for a _long_ time, maybe 20-30 minutes in VirtualBox Win7.
 * extract VisualStudio 10 project to build dll: libV8_win_VS10.7z
 * copy v8\build\Release\lib folder to libV8_vs10\lib
   * v8_nosnapshot.ia32.lib is not needed
+  * x64: copy to libV8_vs10\lib_x64
 * copy v8\include to libV8_vs10\include
 * open libV8_vs10\libV8.sln and build release
 * copy libV8.dll from libV8_vs10\release
-
+  * x64: copy libV8.dll from libV8_vs10\x64\release
 
 ## Future development
 
